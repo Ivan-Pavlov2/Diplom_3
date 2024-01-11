@@ -31,9 +31,9 @@ class TestMainPage:
     @allure.title('Проверка на успешное создание заказа')
     def test_successful_order(self, driver, login):
         main_page = MainPage(driver)
-        main_page.find_my_element(MainPageLocators.BUN)
+        main_page.find_the_crater_bun()
         main_page.add_bun_to_order()
         main_page.add_filling_to_order()
         main_page.click_order_button()
-        main_page.find_my_element(MainPageLocators.ORDER_NUMBER)
+        main_page.find_the_order_number()
         assert main_page.check_presense(MainPageLocators.ORDER_STATUS_TEXT).is_displayed() == True

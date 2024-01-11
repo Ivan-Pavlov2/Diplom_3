@@ -17,3 +17,7 @@ class HeaderPage(BasePage):
     @allure.step('Переход в Личный кабинет')
     def click_on_account(self):
         self.move_to_element_and_click(HeaderPageLocators.PERSONAL_ACCOUNT)
+
+    @allure.step('Ожидание ленты заказов')
+    def wait_orders_list_title(self):
+        self.wait_until_element_visibility(OrdersPageLocators.ORDERS_LIST_TITLE)

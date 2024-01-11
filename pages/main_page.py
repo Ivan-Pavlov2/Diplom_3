@@ -37,6 +37,14 @@ class MainPage(BasePage):
     def check_quantity_of_ingredients(self):
         return self.get_text_of_element(MainPageLocators.INGREDIENT_COUNTER)
 
+    @allure.step('Найти краторную булку')
+    def find_the_crater_bun(self):
+        self.find_my_element(MainPageLocators.BUN)
+
+    @allure.step('Найти номер заказа во всплывающем окне')
+    def find_the_order_number(self):
+        self.find_my_element(MainPageLocators.ORDER_NUMBER)
+
     @allure.step('Создаем заказ и получаем его номер')
     def create_order(self):
         self.wait_until_element_visibility(MainPageLocators.BUN)
