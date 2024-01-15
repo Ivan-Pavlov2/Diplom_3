@@ -11,7 +11,7 @@ import string
 
 @pytest.fixture(params=['firefox', 'chrome'])
 def driver(request):
-    if request.param == 'firefox':
+   if request.param == 'firefox':
         driver = webdriver.Firefox()
         driver.set_window_size(1920, 1080)
     elif request.param == 'chrome':

@@ -45,6 +45,26 @@ class MainPage(BasePage):
     def find_the_order_number(self):
         self.find_my_element(MainPageLocators.ORDER_NUMBER)
 
+    @allure.step('Получить детали ингредиентов')
+    def get_ingredient_details(self):
+        return self.get_text_of_element(MainPageLocators.INGREDIENT_DETAILS_POPUP)
+
+    @allure.step('Проверить скрытость деталей ингредиентов')
+    def invisibility_ingredient_details(self):
+        self.check_invisibility(MainPageLocators.INGREDIENT_DETAILS_POPUP)
+
+    @allure.step('Проверить наличие деталей ингредиентов на экране')
+    def check_displayed_ingredient_details(self) -> bool:
+        return self.check_presense(MainPageLocators.INGREDIENT_DETAILS_POPUP).is_displayed()
+
+    @allure.step('Проверить наличие, что заказа начали готовить')
+    def check_displayed_order_status_text(self) -> bool:
+        return self.check_presense(MainPageLocators.ORDER_STATUS_TEXT).is_displayed()
+
+    @allure.step('Дождаться кнопки создать бургер')
+    def wait_create_burger(self):
+        return self.wait_until_element_visibility(MainPageLocators.CREATE_BURGER)
+
     @allure.step('Создаем заказ и получаем его номер')
     def create_order(self):
         self.wait_until_element_visibility(MainPageLocators.BUN)

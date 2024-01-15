@@ -40,7 +40,7 @@ class BasePage:
         return self.driver.find_element(*locator)
 
     @allure.step('Проверить невидимость элемента')
-    def check_invisibility(self, locator):
+    def check_invisibility(self, locator) -> object:
         return WebDriverWait(self.driver, 10).until(expected_conditions.invisibility_of_element(locator))
 
     @allure.step('Дождаться видимости элемента')

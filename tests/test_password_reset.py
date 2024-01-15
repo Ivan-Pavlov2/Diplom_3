@@ -22,7 +22,7 @@ class TestPasswordReset:
         page.open_link(Links.forgot_password_page)
         page.set_email_for_reset_password(create_and_delete_user[0]['email'])
         page.click_reset_button()
-        page.find_my_element(PasswordResetLocators.SAVE_BUTTON)
+        page.find_save_button()
         current_url = page.get_current_url()
         assert current_url == Links.reset_password_page
 
@@ -32,6 +32,6 @@ class TestPasswordReset:
         page.open_link(Links.forgot_password_page)
         page.set_email_for_reset_password(create_and_delete_user[0]['email'])
         page.click_reset_button()
-        page.find_my_element(PasswordResetLocators.SAVE_BUTTON)
+        page.find_save_button()
         page.click_on_show_password_button()
-        assert page.find_my_element(PasswordResetLocators.INPUT_ACTIVE)
+        assert page.find_input_active()

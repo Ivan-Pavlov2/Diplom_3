@@ -9,16 +9,15 @@ class TestMainPage:
     def test_popup_of_ingredient(self, driver):
         page = MainPage(driver)
         page.click_on_crator_bun()
-        text = page.get_text_of_element(MainPageLocators.INGREDIENT_DETAILS_POPUP)
-        assert text == "Детали ингредиента"
+        assert page.get_ingredient_details() == "Детали ингредиента"
 
     @allure.title('Проверка на закрытие всплывающего окна кликом по крестику')
     def test_close_ingredient_details_window(self, driver):
         page = MainPage(driver)
         page.click_on_crator_bun()
         page.click_cross_button()
-        page.check_invisibility(MainPageLocators.INGREDIENT_DETAILS_POPUP)
-        assert page.check_presense(MainPageLocators.INGREDIENT_DETAILS_POPUP).is_displayed() == False
+        page.invisibility_ingredient_details()
+        assert page.check_displayed_ingredient_details() == False
 
     @allure.title('Проверка на изменение счетчика ингредиента')
     def test_ingredient_counter(self, driver):
@@ -36,4 +35,4 @@ class TestMainPage:
         main_page.add_filling_to_order()
         main_page.click_order_button()
         main_page.find_the_order_number()
-        assert main_page.check_presense(MainPageLocators.ORDER_STATUS_TEXT).is_displayed() == True
+        assert main_page.check_displayed_order_status_text() == True

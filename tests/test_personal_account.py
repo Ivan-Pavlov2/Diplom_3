@@ -12,7 +12,7 @@ class TestPersonalAccount:
     @allure.title('Проверка на открытие страницы "Личный кабинет" по клику на кнопку Личный кабинет')
     def test_go_to_account_from_header(self, driver, login):
         page = PersonalAccountPage(driver)
-        page.find_my_element(HeaderPageLocators.CONSTRUCTOR)
+        page.find_constructor()
         page.click_account_button()
         current_url = page.get_current_url()
         assert current_url == Links.profile_page
@@ -20,7 +20,7 @@ class TestPersonalAccount:
     @allure.title('Проверка на переход в раздел История заказов')
     def test_go_to_order_history(self, driver, login):
         page = PersonalAccountPage(driver)
-        page.find_my_element(HeaderPageLocators.CONSTRUCTOR)
+        page.find_constructor()
         page.click_account_button()
         page.click_order_list_link()
         current_url = page.get_current_url()
@@ -30,12 +30,12 @@ class TestPersonalAccount:
     def test_logout(self, driver, login):
 
         main_page = MainPage(driver)
-        main_page.find_my_element(MainPageLocators.BUN)
+        main_page.find_the_crater_bun()
         header_page = HeaderPage(driver)
         header_page.click_on_account()
         personal_account_page = PersonalAccountPage(driver)
-        personal_account_page.wait_until_element_visibility(PersonalAccountLocators.PROFILE)
+        personal_account_page.wait_profile()
         personal_account_page.click_logout_button()
-        personal_account_page.wait_until_element_visibility(PersonalAccountLocators.ENTER_BUTTON)
-        text = personal_account_page.get_text_of_element(PersonalAccountLocators.ENTER_BUTTON)
+        personal_account_page.wait_enter()
+        text = personal_account_page.get_text_enter()
         assert text == 'Войти'
